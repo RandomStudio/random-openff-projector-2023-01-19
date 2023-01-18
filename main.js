@@ -111,7 +111,7 @@ const loadNextAsset = () => {
 
 const setup = () => {
   // Hide file input
-  document.getElementById("input").style.display = "none";
+  document.getElementById("input-container").style.display = "none";
   document.getElementById("app").style.display = "block";
   loadNextAsset();
   setInterval(tick, 32);

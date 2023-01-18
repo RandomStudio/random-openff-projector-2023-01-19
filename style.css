@@ -23,7 +23,6 @@
 #app {
   width: 1920px;
   height: 840px;
-  background: white;
   position: relative;
 }
 
@@ -75,4 +74,34 @@ h2 {
   width: 100%;
   color: white;
   mix-blend-mode: difference;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: black;
+  border: 1vw solid white;
+  border-bottom: 3vw solid white;
+  border-radius: 2vw;
+  color: white;
+  font-size: 4vw;
+  font-family: "Simula";
+  margin: 10vw;
+  width: 80vw;
+  height: calc(80vh - 20vw);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+}
+
+.custom-file-upload:hover {
+  color: #000;
+  background: #fff;
+  border-bottom: 1vw solid white;
 }

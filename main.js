@@ -44,7 +44,6 @@ const loadImage = () => {
 
 const loadVideo = () => {
   const imported = allAssets[assetIndex].imported;
-  console.log(allAssets[assetIndex]);
   document.getElementById("bottom-text").innerText =
     getFilenameWithoutExtension(imported[0]);
 
@@ -55,7 +54,6 @@ const loadVideo = () => {
 };
 
 const tick = () => {
-  console.log("tick");
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
 
@@ -69,8 +67,6 @@ const tick = () => {
   const elementRatio = elementWidth / elementHeight;
   const drawWidth = Math.min(600, elementWidth);
   const drawHeight = drawWidth / elementRatio;
-
-  console.log("?");
 
   ctx.drawImage(
     elementToDraw,
@@ -114,6 +110,8 @@ const loadNextAsset = () => {
 };
 
 const setup = () => {
+  // Hide file input
+  document.getElementById("input").style.display = "none";
   document.getElementById("app").style.display = "block";
   loadNextAsset();
   setInterval(tick, 32);

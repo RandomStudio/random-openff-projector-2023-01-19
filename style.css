@@ -18,12 +18,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 #app {
   width: 1920px;
   height: 840px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 h1 {

@@ -130,7 +130,8 @@ fileInput.addEventListener("change", (e) => {
     const url = URL.createObjectURL(file);
 
     // Determine type by extension
-    const type = file.name.split(".").pop() === "mp4" ? "video" : "image";
+    const type =
+      file.name.split(".").pop().toLowerCase() === "mp4" ? "video" : "image";
 
     return {
       type,

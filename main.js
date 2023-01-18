@@ -1,17 +1,6 @@
 import "./style.css";
-const imageImports = Object.entries(import.meta.globEager("./assets/*.jpg"));
-const videoExports = Object.entries(import.meta.globEager("./assets/*.mp4"));
 
-const allAssets = [
-  ...videoExports.map((imported) => ({
-    type: "video",
-    imported,
-  })),
-  ...imageImports.map((imported) => ({
-    type: "image",
-    imported,
-  })),
-];
+let allAssets = [];
 
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -125,9 +114,32 @@ const loadNextAsset = () => {
 };
 
 const setup = () => {
+  document.getElementById("app").style.display = "block";
   loadNextAsset();
   setInterval(tick, 32);
   tick();
 };
 
-setup();
+// Hide app
+document.getElementById("app").style.display = "none";
+
+const fileInput = document.getElementById("input");
+fileInput.addEventListener("change", (e) => {
+  const files = e.target.files;
+
+  allAssets = [...files].map((file) => {
+    console.log(file);
+    const url = URL.createObjectURL(file);
+
+    // Determine type by extension
+    const type = file.name.split(".").pop() === "mp4" ? "video" : "image";
+
+    return {
+      type,
+      imported: [file.name, { default: url }],
+    };
+  });
+
+  shuffleArray(allAssets);
+  setup();
+});

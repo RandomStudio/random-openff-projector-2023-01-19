@@ -54,7 +54,18 @@ const loadVideo = () => {
 };
 
 const tick = () => {
+  const appDimensions = document.getElementById("app").getBoundingClientRect();
+  const appHeight = appDimensions.height;
+  const appWidth = appDimensions.width;
+
   const canvas = document.getElementById("canvas");
+  if (canvas.height !== appHeight) {
+    canvas.height = appHeight;
+  }
+  if (canvas.width !== appWidth) {
+    canvas.width = appWidth;
+  }
+
   const ctx = canvas.getContext("2d");
 
   const isVideo = allAssets[assetIndex].type === "video";

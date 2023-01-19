@@ -28,11 +28,12 @@ body {
 }
 
 #app {
-  width: 100vw;
-  max-height: 840px;
+  overflow: hidden;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 150px;
+  left: 975px;
+  width: 945px;
+  height: 413px;
 }
 
 h1 {
@@ -45,7 +46,7 @@ h1 {
   text-align: center;
 
   font-family: Simula;
-  font-size: 70px;
+  font-size: 41px;
   font-weight: 400;
   line-height: 62px;
   letter-spacing: -0.04em;
@@ -65,7 +66,7 @@ h1 i {
 
 h2 {
   font-family: ABC Monument Grotesk Trial;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 29px;
   letter-spacing: 0em;

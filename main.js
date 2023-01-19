@@ -34,6 +34,18 @@ const getFilenameWithoutExtension = (name) => {
   return filenameWithoutExtension;
 };
 
+const openFullscreen = (elem) => {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
+};
+
 const loadImage = () => {
   const imported = allAssets[assetIndex].imported;
   document.getElementById("bottom-text").innerText =
@@ -48,7 +60,7 @@ const loadVideo = () => {
     getFilenameWithoutExtension(imported[0]);
 
   video.src = imported[1].default;
-  video.playbackRate = 4;
+  video.playbackRate = 0.75;
   video.loop = true;
   video.play();
 };
@@ -76,7 +88,7 @@ const tick = () => {
   const elementHeight = isVideo ? video.videoHeight : img.height;
 
   const elementRatio = elementWidth / elementHeight;
-  const drawWidth = Math.min(600, elementWidth);
+  const drawWidth = Math.min(300, elementWidth);
   const drawHeight = drawWidth / elementRatio;
 
   ctx.drawImage(
@@ -125,7 +137,7 @@ const setup = () => {
   document.getElementById("input-container").style.display = "none";
   document.getElementById("app").style.display = "block";
   loadNextAsset();
-  setInterval(tick, 32);
+  setInterval(tick, 500);
   tick();
 };
 
@@ -153,3 +165,7 @@ fileInput.addEventListener("change", (e) => {
   shuffleArray(allAssets);
   setup();
 });
+
+document.getElementById("app").onclick = () => {
+  openFullscreen(document.body);
+};
